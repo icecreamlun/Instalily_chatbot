@@ -3,14 +3,14 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, ConfigDict
 from typing import List, Optional, Dict
 import uvicorn
-from chat_logic import ChatAgent
-from cart_manager import CartManager, CartItem
+from app.core.chat_logic import ChatAgent
+from app.core.cart_manager import CartManager, CartItem
 import os
 from dotenv import load_dotenv
 import re
 
 # Load environment variables
-load_dotenv()
+load_dotenv(os.path.join(os.path.dirname(os.path.dirname(__file__)), 'config', '.env'))
 
 app = FastAPI(title="PartSelect Chat API")
 

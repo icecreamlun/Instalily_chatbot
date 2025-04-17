@@ -4,6 +4,11 @@ from sentence_transformers import SentenceTransformer
 from typing import List, Dict, Optional
 import json
 import os
+from pathlib import Path
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv(os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), 'config', '.env'))
 
 class VectorStore:
     def __init__(self):
@@ -26,7 +31,8 @@ class VectorStore:
     def _load_product_data(self):
         """Load product data from JSON file and create embeddings."""
         try:
-            with open('product_data.json', 'r') as f:
+            data_file_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), 'data', 'product_data.json')
+            with open(data_file_path, 'r') as f:
                 data = json.load(f)
                 self.products = data.get('products', [])
                 
@@ -105,5 +111,6 @@ class VectorStore:
     
     def save_products(self):
         """Save product data to file."""
-        with open('product_data.json', 'w') as f:
+        data_file_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), 'data', 'product_data.json')
+        with open(data_file_path, 'w') as f:
             json.dump({"products": self.products}, f) 

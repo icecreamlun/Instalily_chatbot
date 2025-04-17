@@ -1,13 +1,15 @@
 import os
 from typing import List, Dict, Any, Optional
 import requests
-from vector_store import VectorStore
-from scraper import PartSelectScraper
+from app.core.vector_store import VectorStore
+from app.core.search_engine import SearchEngine
+from app.core.repair_chain import RepairChain
+from app.core.scraper import PartSelectScraper
 from dotenv import load_dotenv
 import re
 
 # Load environment variables
-load_dotenv()
+load_dotenv(os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), 'config', '.env'))
 
 class ChatAgent:
     def __init__(self):

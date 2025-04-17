@@ -1,5 +1,8 @@
 from typing import List, Dict
 import re
+from app.core.vector_store import VectorStore
+from app.core.search_engine import SearchEngine
+from app.core.repair_chain import RepairChain
 
 class ChatAgent:
     def __init__(self, vector_store, cart_manager, chat_model, logger):

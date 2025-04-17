@@ -7,6 +7,8 @@ from typing import Dict, List, Optional
 import logging
 from dataclasses import dataclass
 from enum import Enum
+from app.core.vector_store import VectorStore
+from app.core.search_engine import SearchEngine
 
 class ProblemType(Enum):
     ELECTRICAL = "electrical"

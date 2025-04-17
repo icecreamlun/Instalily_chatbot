@@ -10,6 +10,7 @@ from urllib.parse import quote_plus
 import time
 import random
 import os
+from app.core.vector_store import VectorStore
 
 class SearchEngine:
     def __init__(self):
