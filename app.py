@@ -32,10 +32,7 @@ class Message(BaseModel):
     content: str
 
 class ChatRequest(BaseModel):
-    model_config = ConfigDict(protected_namespaces=())
     messages: List[Message]
-    model_name: Optional[str] = "deepseek"
-    user_id: Optional[str] = None
 
 class ChatResponse(BaseModel):
     message: Message
@@ -91,14 +88,8 @@ Always respond naturally in conversation, but make sure to use these functions w
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-async def handle_cart_operation(user_id: str, content: str) -> ChatResponse:
+async def handle_cart_operation(content: str) -> ChatResponse:
     """Handle cart-related operations."""
-    if not user_id:
-        return ChatResponse(message=Message(
-            role="assistant",
-            content="Please provide a user_id for cart operations."
-        ))
-    
     # Extract part number
     part_number = re.search(r'PS\d{8}', content)
     if not part_number:
@@ -119,7 +110,6 @@ async def handle_cart_operation(user_id: str, content: str) -> ChatResponse:
     
     if "add" in content.lower():
         success = cart_manager.add_to_cart(
-            user_id=user_id,
             part_number=part_number,
             name=product.get('name', ''),
             price=float(product.get('price', 0))
@@ -137,7 +127,7 @@ async def handle_cart_operation(user_id: str, content: str) -> ChatResponse:
             ))
     
     elif "remove" in content.lower():
-        success = cart_manager.remove_from_cart(user_id, part_number)
+        success = cart_manager.remove_from_cart(part_number)
         if success:
             return ChatResponse(message=Message(
                 role="assistant",
@@ -181,12 +171,12 @@ async def handle_repair_query(content: str) -> ChatResponse:
         content=response_content
     ))
 
-async def handle_shopping_query(user_id: str, content: str) -> ChatResponse:
+async def handle_shopping_query(content: str) -> ChatResponse:
     """Handle shopping-related queries."""
     # Check for cart operations
     if "show my cart" in content.lower() or "view my cart" in content.lower():
-        items = cart_manager.get_cart(user_id)
-        total = cart_manager.get_cart_total(user_id)
+        items = cart_manager.get_cart()
+        total = cart_manager.get_cart_total()
         
         if not items:
             return ChatResponse(message=Message(
@@ -272,11 +262,11 @@ def _format_diagnosis_response(diagnosis: dict) -> str:
     
     return "\n".join(response_parts)
 
-@app.get("/api/cart/{user_id}", response_model=CartResponse)
-async def get_cart(user_id: str):
-    """Get the user's cart contents."""
-    items = cart_manager.get_cart(user_id)
-    total = cart_manager.get_cart_total(user_id)
+@app.get("/api/cart", response_model=CartResponse)
+async def get_cart():
+    """Get the cart contents."""
+    items = cart_manager.get_cart()
+    total = cart_manager.get_cart_total()
     
     return CartResponse(
         items=[{

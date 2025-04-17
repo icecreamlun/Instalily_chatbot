@@ -86,9 +86,8 @@ class ChatAgent:
                 response += "You can remove items by saying 'remove PS12345678'."
                 return response
             
-            # For other queries, use the chat model
-            response = await self.chat_model.generate_response(messages)
-            return response
+            # If no cart operation detected, use the chat model
+            return await self.chat_model.generate_response(messages)
             
         except Exception as e:
             self.logger.error(f"Error generating response: {str(e)}")
