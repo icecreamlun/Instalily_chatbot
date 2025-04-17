@@ -1,0 +1,64 @@
+{
+    "products": [
+        {
+            "part_number": "PS11752778",
+            "name": "Refrigerator Ice Maker Assembly",
+            "description": "Genuine OEM replacement ice maker assembly for various Whirlpool, KitchenAid, and Maytag refrigerators",
+            "model_compatibility": "WDT780SAEM1, WRF535SMHZ, KRFF507HPS",
+            "installation_guide": "1. Turn off water supply\n2. Unplug refrigerator\n3. Remove old ice maker\n4. Connect water line to new ice maker\n5. Secure mounting bracket\n6. Plug in and test",
+            "price": 129.99,
+            "product_url": "https://www.partselect.com/PS11752778-Whirlpool-Ice-Maker-Assembly.htm",
+            "part_video": "https://www.youtube.com/watch?v=example1",
+            "repair_stories": [
+                {
+                    "title": "Ice Maker Not Making Ice",
+                    "symptoms": "No ice production, water line connected but no water flow",
+                    "solution": "Replaced ice maker assembly, checked water line connections",
+                    "success": true
+                },
+                {
+                    "title": "Ice Maker Leaking",
+                    "symptoms": "Water leaking from ice maker area",
+                    "solution": "Replaced water inlet valve and ice maker assembly",
+                    "success": true
+                }
+            ]
+        },
+        {
+            "part_number": "PS11896901",
+            "name": "Dishwasher Spray Arm",
+            "description": "Upper spray arm assembly for improved cleaning performance",
+            "model_compatibility": "WDT780SAEM1, WDF560SAFM",
+            "installation_guide": "1. Remove lower rack\n2. Unscrew retaining nut\n3. Remove old spray arm\n4. Install new spray arm\n5. Secure with retaining nut",
+            "price": 45.99,
+            "product_url": "https://www.partselect.com/PS11896901-Whirlpool-Dishwasher-Spray-Arm.htm",
+            "part_video": "https://www.youtube.com/watch?v=example2",
+            "repair_stories": [
+                {
+                    "title": "Dishwasher Not Cleaning Properly",
+                    "symptoms": "Dishes not getting clean, poor water circulation",
+                    "solution": "Replaced spray arm, cleaned filter",
+                    "success": true
+                }
+            ]
+        },
+        {
+            "part_number": "PS11746285",
+            "name": "Refrigerator Water Filter",
+            "description": "Premium water filtration system that removes contaminants and improves taste",
+            "model_compatibility": "WRF535SMHZ, WRX735SDHZ",
+            "installation_guide": "1. Locate filter compartment\n2. Turn old filter counter-clockwise to remove\n3. Insert new filter\n4. Turn clockwise to lock\n5. Run water for 5 minutes to flush",
+            "price": 49.99,
+            "product_url": "https://www.partselect.com/PS11746285-Whirlpool-Refrigerator-Water-Filter.htm",
+            "part_video": "https://www.youtube.com/watch?v=example3",
+            "repair_stories": [
+                {
+                    "title": "Water Filter Replacement",
+                    "symptoms": "Water flow reduced, filter indicator light on",
+                    "solution": "Replaced water filter, reset indicator light",
+                    "success": true
+                }
+            ]
+        }
+    ]
+} 
