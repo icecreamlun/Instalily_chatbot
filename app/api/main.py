@@ -12,7 +12,14 @@ import re
 # Load environment variables
 load_dotenv(os.path.join(os.path.dirname(os.path.dirname(__file__)), 'config', '.env'))
 
-app = FastAPI(title="PartSelect Chat API")
+app = FastAPI(
+    title="PartSelect Chat API",
+    description="API for PartSelect Chat Application",
+    version="1.0.0",
+    docs_url="/docs",
+    redoc_url="/redoc",
+    openapi_url="/openapi.json"
+)
 
 # Add CORS middleware
 app.add_middleware(
@@ -46,6 +53,7 @@ async def root():
     return {
         "message": "Welcome to PartSelect Chat API",
         "docs": "/docs",
+        "redoc": "/redoc",
         "health": "/api/health"
     }
 
